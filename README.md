@@ -1,7 +1,8 @@
 # AnimalCompetition
 An ICS4U Assignment
-Contributer edit the document [here])(https://docs.google.com/document/d/1U9jMFjn_aXgzKeLX-VEsJbIc4vT_vvxj2GAW7LH0W_k/edit?usp=sharing)
-# AnimalCompetition             Dany & Norby
+Contributer edit the document [here](https://docs.google.com/document/d/1U9jMFjn_aXgzKeLX-VEsJbIc4vT_vvxj2GAW7LH0W_k/edit?usp=sharing)
+# AnimalCompetition            
+Dany & Norby
 # *Chimera Faceoff*
 
 ## General Idea
