@@ -1,6 +1,11 @@
 # AnimalCompetition
 An ICS4U Assignment
-Contributer edit the document [here](https://docs.google.com/document/d/1U9jMFjn_aXgzKeLX-VEsJbIc4vT_vvxj2GAW7LH0W_k/edit?usp=sharing)
+
+# Contributor instructions
+Contributers can  edit the idea document [here](https://docs.google.com/document/d/1U9jMFjn_aXgzKeLX-VEsJbIc4vT_vvxj2GAW7LH0W_k/edit?usp=sharing) if signed in
+To start coding, create your own replit file, on the creation screen click the "Import from Github" button on the top right, and select this project.
+
+
 # AnimalCompetition            
 Dany & Norby
 # *Chimera Faceoff*
