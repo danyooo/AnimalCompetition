@@ -1,12 +1,29 @@
 using System;
 class Program{
 public static void Main(string[] args)  {
+  
   Player Player1 = new Player();
-  Console.WriteLine("Please enter your name");
-  while (Player1.name !=""){
+  // Console.WriteLine("Please enter your name");
+  // while (Player1.name !=""){
+  // Player1.readInput();
+  // Console.WriteLine("you pressed " + Player1.keyInput);
+  //   }
+  // create an array to cycle through
+string[] testArray = {"a","b","c","d","e"};
+int arrayReader = 0;
+  // create a bool and while loop to debug with
+  bool arrayCycle = true;
+while(arrayCycle == true){
   Player1.readInput();
   Console.WriteLine("you pressed " + Player1.keyInput);
+  if(Player1.keyInput == 0x41){
+  Console.WriteLine(" A Was Pressed!");
+  // TODO: FIGURE OUT WHY ITS NOT DETECTING A. Doesn't detect virtual keycodes?
+    //https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
     }
+  Player1.cycleChoices(testArray,arrayReader);
+}
+  
 }
 }
 
@@ -29,7 +46,19 @@ protected int pointpool = 15;
  ConsoleKeyInfo keyPress = Console.ReadKey();
     // Set the keyInput value to the key that was pressed
     keyInput = keyPress.KeyChar;
-   
+  }
+  // create a method that would detect inputs to cycle through an array of choices
+  public void cycleChoices(string[] arrayName, int arrayReader){
+    // If A is pressed...
+  if(this.keyInput == 0x41 && arrayName.Length > 0){
+    Console.WriteLine(" A Was Pressed!");
+  arrayReader--;
+  Console.WriteLine("You went down 1 , now at" +  arrayName[arrayReader]);
+  }
+    else if(this.keyInput==0x44 && arrayName.Length !>arrayName.Length -1){
+    arrayReader++;
+      Console.WriteLine("You went up 1 , now at" +  arrayName[arrayReader]);
+    }
   }
 }
 abstract class Attributes{
