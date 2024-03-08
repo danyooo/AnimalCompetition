@@ -1,7 +1,12 @@
 using System;
 class Program{
 public static void Main(string[] args)  {
-  Console.WriteLine("Hello World"); 
+  Player Player1 = new Player();
+  Console.WriteLine("Please enter your name");
+  while (Player1.name !=""){
+  Player1.readInput();
+  Console.WriteLine("you pressed " + Player1.keyInput);
+    }
 }
 }
 
@@ -12,12 +17,20 @@ abstract class Game{
   
 }
 class Player{
-// has a pointpool variablre
+// has a pointpool variable
+protected int pointpool = 15;
 //has a name variable
-
-  
+  public string name; // to be entered by the player
+  // Create a keyInput variable to return the pressed key to
+ public char keyInput;
 //has a method that reads inputs
-  
+  public void readInput(){
+    //  ConsoleKeyInfo is the only variable that can take an input from the 'Console.ReadKey' method
+ ConsoleKeyInfo keyPress = Console.ReadKey();
+    // Set the keyInput value to the key that was pressed
+    keyInput = keyPress.KeyChar;
+   
+  }
 }
 abstract class Attributes{
 // define general attributes (mobility,defense, etc)
@@ -27,9 +40,13 @@ abstract class Attributes{
 // inherits from the Attributes class
 class Modifiers : Attributes{
 //variable to store pointvalue (neg or pos) for each part
-  // Method that would take or add points from the players point pool
+int pointvalue;
   // Method that would check if the player has enough points to choose a modifier
+  // check every time a player confirms their modifier selection
+  public void checkPoints(){}
+  
 // Keep attributes blank, set them later in the construction of objects
+  // Method that would take or add points from the players point pool
 // Attributes would add to the Chimera Object's attributes
 
   // If applicable, method that would do as above states
