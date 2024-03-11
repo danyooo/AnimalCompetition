@@ -1,7 +1,7 @@
 using System;
 class Program{
 public static void Main(string[] args)  {
-  
+  // work on player name storage
   Player Player1 = new Player();
   // Console.WriteLine("Please enter your name");
   // while (Player1.name !=""){
@@ -10,22 +10,20 @@ public static void Main(string[] args)  {
   //   }
   // create an array to cycle through
 string[] testArray = {"a","b","c","d","e"};
-int arrayReader = 0;
+int arrayReader = testArray.Length -3;
   // create a bool and while loop to debug with
   bool arrayCycle = true;
 while(arrayCycle == true){
   Player1.readInput();
-  Console.WriteLine("you pressed " + Player1.keyInput);
-  if(Player1.keyInput == 0x41){
-  Console.WriteLine(" A Was Pressed!");
-  // TODO: FIGURE OUT WHY ITS NOT DETECTING A. Doesn't detect virtual keycodes?
-    //https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+// Add a linebreak 
+  Console.WriteLine("\n you pressed " + Player1.keyInput);
+ 
+  Player1.cycleChoices(testArray,ref arrayReader);
     }
-  Player1.cycleChoices(testArray,arrayReader);
 }
   
 }
-}
+
 
 abstract class Game{
 
@@ -48,16 +46,18 @@ protected int pointpool = 15;
     keyInput = keyPress.KeyChar;
   }
   // create a method that would detect inputs to cycle through an array of choices
-  public void cycleChoices(string[] arrayName, int arrayReader){
+  // "ref" allows things to modify  original variables
+  public void cycleChoices(string[] arrayName, ref int arrayReader){
     // If A is pressed...
-  if(this.keyInput == 0x41 && arrayName.Length > 0){
+    //  As long as the arrayreader is greater than
+  if(this.keyInput == 'a' && arrayReader > 0){
     Console.WriteLine(" A Was Pressed!");
-  arrayReader--;
-  Console.WriteLine("You went down 1 , now at" +  arrayName[arrayReader]);
+    arrayReader = arrayReader -1;
+    Console.WriteLine("You went down 1 , now at " +  arrayName[arrayReader]);
   }
-    else if(this.keyInput==0x44 && arrayName.Length !>arrayName.Length -1){
-    arrayReader++;
-      Console.WriteLine("You went up 1 , now at" +  arrayName[arrayReader]);
+    else if(this.keyInput=='d' && arrayReader!=arrayName.Length  - 1){
+    arrayReader = arrayReader + 1;
+      Console.WriteLine("You went up 1 , now at " +  arrayName[arrayReader]);
     }
   }
 }
@@ -104,5 +104,6 @@ class Environment{
 // Add "Weather" array, and a "Terrain" array
 
   // Method that, depending on certain modifiers(body parts) would multiply attributes positively or negatively. Check if Modifiers are buffed/debuffed per Body Section(Head,Torso,etc) if the modifiers multiplications apply to terrain/weather
-  
 }
+
+
