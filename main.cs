@@ -7,11 +7,30 @@ class Program
         var env = new Environment();
         env.testing();
         var attri = new Attributes();
-        
+
         if (env.rain)
         {
             attri.mobility -= 1;
             Console.WriteLine("Mobility reduced to " + attri.mobility);
+        }
+
+        if (env.NightVision)
+        {
+
+            attri.sight += 1;
+            Console.WriteLine("Vision increased to " + attri.sight);
+        }
+        if (env.Snowing)
+        {
+
+            attri.attack += 1;
+            Console.WriteLine("Attack increased to " + attri.attack);
+        }
+        if (env.Hailing)
+        {
+
+            attri.defense -= 1;
+            Console.WriteLine("Health decreased by 1 ");
         }
     }
 }
@@ -80,41 +99,125 @@ class Chimera : Attributes
 
 class Environment
 {
-  public bool rain = false;
+    public bool rain, NightVision, Snowing, Hailing = false;
+
     public void testing()
     {
         // Add  randomized "Weather" array, and a "Terrain" array
-  Random rdm = new Random();
-      string[] Weather = { "Rain", "Sunny", "Night Time", "Winter/snow", "Hailing" };
-      string[] Terrain = { "Mountain", "Plains", "Beach" };
-      int WeatherIndex = rdm.Next(Weather.Length);
-      int TerrainIndex = rdm.Next(Terrain.Length);
-      Console.WriteLine("The weather is {0}", Weather[WeatherIndex]);
-      
-      
+        Random rdm = new Random();
+        string[] Weather = { "Rain", "Sunny", "Night Time", "Winter/snow", "Hailing" };
+        string[] Terrain = { "Mountain", "Plains", "Beach" };
+        string[] MountainTerrain = { "Ravine", "Mountain peak", "Cliffside", "Volcano", };
+        string[] PlainsTerrain = { "Forest", "Cave", "Hills", "Small lake/river", };
+        string[] BeachTerrain = { "Rocky beach", "Desert", "Island", };
+        int WeatherIndex = rdm.Next(Weather.Length);
+        int TerrainIndex = rdm.Next(Terrain.Length);
+        int MountainTerrainIndex = rdm.Next(MountainTerrain.Length);
+        int PlainsTerrainIndex = rdm.Next(PlainsTerrain.Length);
+        int BeachTerrainIndex = rdm.Next(BeachTerrain.Length);
+        Console.WriteLine("The weather is {0}", Weather[WeatherIndex]);
 
-      if(Weather[WeatherIndex] == "Rain")
-    {
-      this.rain = true;
-      
-      
-      }
-  
-      Console.WriteLine("The Terrain is {0}", Terrain[TerrainIndex]);
-    if(Terrain[TerrainIndex] == "Mountain"){
-      Console.WriteLine("You are in a Mountainous terrain");
 
-  
 
-      
-    }
-      string[] MountainTerrain = { "Ravine", "Mountain peak", "Cliffside", "Volcano", };
-      string[] PlainsTerrain = { "Forest", "Cave", "Hills", "Small lake/river", };
-      string[] BeachTerrain = { "Rocky beach", "Desert", "Island", };
-    }
+        if (Weather[WeatherIndex] == "Rain")
+        {
+            this.rain = true;
+
+
+        }
+        if (Weather[WeatherIndex] == "Night Time")
+        {
+            this.NightVision = true;
+
+
+        }
+
+        if (Weather[WeatherIndex] == "Winter/snow")
+        {
+            this.Snowing = true;
+
+
+        }
+
+        if (Weather[WeatherIndex] == "Hailing")
+        {
+            this.Hailing = true;
+
+
+        }
+
+        if (Terrain[TerrainIndex] == "Mountain")
+        {
+            Console.WriteLine("You are in a Mountainous environment");
+        }
+        if (Terrain[TerrainIndex] == "Plains")
+        {
+            Console.WriteLine("You are in a Plains environment");
+        }
+        if (Terrain[TerrainIndex] == "Beach")
+        {
+            Console.WriteLine("You are in a Beach evironment");
+        }
+        if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Ravine")
+        {
+            Console.WriteLine("You are in a Ravine terrain");
+          }
+            if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Mountain peak")
+            {
+                Console.WriteLine("You are in a Mountain Peak terrain");
+              }
+                if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Cliffside")
+                {
+                    Console.WriteLine("You are in a Cliffside terrain");
+                  }
+                    if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Volcano")
+                    {
+                        Console.WriteLine("You are in a Volcano terrain");
+
+
+                    }
+      if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Forest")
+      {
+          Console.WriteLine("You are in a Forest terrain");
+        }
+          if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Cave")
+          {
+              Console.WriteLine("You are in a Cave terrain");
+            }
+              if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Hills")
+              {
+                  Console.WriteLine("You are in a Hill terrain");
+                }
+                  if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Small lake/river")
+                  {
+                      Console.WriteLine("You are in a lake/river terrain");
+
+
+                  }
+      if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Rocky Beach")
+      {
+          Console.WriteLine("You are in a Rocky Beach terrain");
+        }
+          if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Desert")
+          {
+              Console.WriteLine("You are in a Desert terrain");
+            }
+              if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Island")
+              {
+                  Console.WriteLine("You are in a Island terrain");
+                }
+                  
+
+
+
+                }
+
+            }
+
+
+
+            // Method that, depending on certain modifiers(body parts) would multiply attributes positively or negatively. Check if Modifiers are buffed/debuffed per Body Section(Head,Torso,etc) if the modifiers multiplications apply to terrain/weather
+
+        
+
     
-    
-
-    // Method that, depending on certain modifiers(body parts) would multiply attributes positively or negatively. Check if Modifiers are buffed/debuffed per Body Section(Head,Torso,etc) if the modifiers multiplications apply to terrain/weather
-
-}
