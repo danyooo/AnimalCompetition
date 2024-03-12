@@ -5,7 +5,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        // work on player name storage
+
         var Player1 = new Player();
         Console.WriteLine("Please enter your name");
         // Create a list to store player inputs in while selecting a name
@@ -14,20 +14,23 @@ class Program
         // While player name is not selected...
         while (Player1.name != "")
         {
-            // Read the player's input
             Player1.readInput();
-            PlayerName.Add(Player1.keyInput);
-            Console.WriteLine("\n you pressed " + Player1.keyInput);
-            // If enter is pressed..
-            if (Player1.keyInput == (char)(13))
-            {
+            Player1.selectName(PlayerName);
+            Console.WriteLine("listcount " + PlayerName.Count);
+            // // Read the player's input
+            // Player1.readInput();
+            // PlayerName.Add(Player1.keyInput);
+            // Console.WriteLine("\n you pressed " + Player1.keyInput);
+            // // If enter is pressed..
+            // if (Player1.keyInput == (char)(13))
+            // {
 
-                //  Convert & Merge each character typed into one string to form a                       name
-                // MAYBE MAKE INTO A METHOD TOMORROW
-                string playersName = string.Concat(PlayerName);
-                Console.WriteLine("You pressed enter! \n" + "Your name is " + playersName);
-                //
-            }
+            //     //  Convert & Merge each character typed into one string to form a                       name
+            //     // MAYBE MAKE INTO A METHOD TOMORROW
+            //     string playersName = string.Concat(PlayerName);
+            //     Console.WriteLine("You pressed enter! \n" + "Your name is " + playersName);
+            //     //
+            // }
 
         }
         // create an array to cycle through
@@ -86,6 +89,21 @@ class Player
         {
             arrayReader = arrayReader + 1;
             Console.WriteLine("You went up 1 , now at " + arrayName[arrayReader]);
+        }
+    }
+    // Method to Select Name
+    public void selectName(List<char> listName)
+    {
+
+        listName.Add(this.keyInput);
+        // If enter is pressed..
+        if (this.keyInput == (char)(13))
+        {
+
+            //  Convert & Merge each character typed into one string to form a                       name
+            string playersName = string.Concat(listName);
+            Console.WriteLine("You pressed enter! \n" + "Your name is " + playersName);
+            //
         }
     }
 }
