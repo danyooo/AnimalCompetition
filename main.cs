@@ -16,7 +16,6 @@ class Program
         {
             Player1.readInput();
             Player1.selectName(PlayerName);
-            Console.WriteLine("listcount " + PlayerName.Count);
             // // Read the player's input
             // Player1.readInput();
             // PlayerName.Add(Player1.keyInput);
