@@ -9,14 +9,14 @@ class Program
 
 
         var Player1 = new Player();
-        Console.WriteLine("Please enter your name");
         // Create a list to store player inputs in while selecting a name
         // Create a 'PlayerName' list to store each character a player inputs during         name selection
         List<char> PlayerName = new List<char>();
         // While player name is not selected...
+        Console.WriteLine("Please enter your name");
         while (Player1.name == "")
         {
-          Console.WriteLine(" I am selecting a name!");
+      
             Player1.readInput();
             Player1.selectName(PlayerName);
             // once player name is selected, break the loop
@@ -28,12 +28,11 @@ class Program
         // once player name is set, cycle array
         if (Player1.name != "")
         {
-            while (Player1.name != "")
-            {
-Console.WriteLine("I am finished selecting a name!");
-                // create an array to cycle through
                 string[] testArray = { "a", "b", "c", "d", "e" };
                 int arrayReader = testArray.Length - 3;
+            while (Player1.name != "")
+            {
+                // create an array to cycle through
                 Player1.readInput();
                 // Add a linebreak 
                 Console.WriteLine("\n you pressed " + Player1.keyInput);
@@ -91,7 +90,7 @@ class Player
     // has a pointpool variable
     protected int pointpool = 15;
     //has a name variable
-    public string name; // to be entered by the player
+    public string name =""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
                         // Create a keyInput variable to return the pressed key to
     public char keyInput;
     //has a method that reads inputs
