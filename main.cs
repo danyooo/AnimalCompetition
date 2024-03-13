@@ -9,32 +9,40 @@ class Program
 
 
         var Player1 = new Player();
-        Console.WriteLine("Please enter your name");
         // Create a list to store player inputs in while selecting a name
         // Create a 'PlayerName' list to store each character a player inputs during         name selection
         List<char> PlayerName = new List<char>();
         // While player name is not selected...
-        while (Player1.name != "")
+        Console.WriteLine("Please enter your name");
+        while (Player1.name == "")
         {
+      
             Player1.readInput();
             Player1.selectName(PlayerName);
-            // // Read the player's input
-            // Player1.readInput();
-            // PlayerName.Add(Player1.keyInput);
-            // Console.WriteLine("\n you pressed " + Player1.keyInput);
-            // // If enter is pressed..
-            // if (Player1.keyInput == (char)(13))
-            // {
-
-            //     //  Convert & Merge each character typed into one string to form a                       name
-            //     // MAYBE MAKE INTO A METHOD TOMORROW
-            //     string playersName = string.Concat(PlayerName);
-            //     Console.WriteLine("You pressed enter! \n" + "Your name is " + playersName);
-            //     //
-            // }
+            // once player name is selected, break the loop
+            if (Player1.name != "")
+            {
+                break;
+            }
         }
-      // WEATHER TEST CODE
- Console.WriteLine("Hello World");
+        // once player name is set, cycle array
+        if (Player1.name != "")
+        {
+                string[] testArray = { "a", "b", "c", "d", "e" };
+                int arrayReader = testArray.Length - 3;
+            while (Player1.name != "")
+            {
+                // create an array to cycle through
+                Player1.readInput();
+                // Add a linebreak 
+                Console.WriteLine("\n you pressed " + Player1.keyInput);
+
+                Player1.cycleChoices(testArray, ref arrayReader);
+
+            }
+        }
+        // WEATHER TEST CODE
+        Console.WriteLine("Hello World");
         var env = new Environment();
         env.testing();
         var attri = new Attributes();
@@ -65,21 +73,9 @@ class Program
         }
     }
 }
-        // create an array to cycle through
-        // string[] testArray = {"a","b","c","d","e"};
-        // int arrayReader = testArray.Length -3;
-        //   // create a bool and while loop to debug with
-        //   bool arrayCycle = true;
-        // while(arrayCycle == true){
-        //   Player1.readInput();
-        // // Add a linebreak 
-        //   Console.WriteLine("\n you pressed " + Player1.keyInput);
 
-        //   Player1.cycleChoices(testArray,ref arrayReader);
-        //     }
-    }
 
-}
+
 
 
 abstract class Game
@@ -94,7 +90,7 @@ class Player
     // has a pointpool variable
     protected int pointpool = 15;
     //has a name variable
-    public string name; // to be entered by the player
+    public string name =""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
                         // Create a keyInput variable to return the pressed key to
     public char keyInput;
     //has a method that reads inputs
@@ -133,21 +129,22 @@ class Player
         {
 
             //  Convert & Merge each character typed into one string to form a                       name
-            string playersName = string.Concat(listName);
-            Console.WriteLine("You pressed enter! \n" + "Your name is " + playersName);
+            this.name = string.Concat(listName);
+            Console.WriteLine("You pressed enter! \n" + "Your name is " + this.name);
             //
         }
     }
 }
 
-abstract class Attributes
+class Attributes
 {
     // define general attributes (mobility,defense, etc)
     public int defense = 5;
     public int mobility = 5;
     public int sight = 5;
     public int attack = 5;
-    public void Attributetest(){
+    public void Attributetest()
+    {
         Console.WriteLine("Defense is " + defense + ", mobility is " + mobility + ", sight is " + sight + ", attack is " + attack);
 
     }
@@ -252,64 +249,64 @@ class Environment
         if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Ravine")
         {
             Console.WriteLine("You are in a Ravine terrain");
-          }
-            if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Mountain peak")
-            {
-                Console.WriteLine("You are in a Mountain Peak terrain");
-              }
-                if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Cliffside")
-                {
-                    Console.WriteLine("You are in a Cliffside terrain");
-                  }
-                    if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Volcano")
-                    {
-                        Console.WriteLine("You are in a Volcano terrain");
-
-
-                    }
-      if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Forest")
-      {
-          Console.WriteLine("You are in a Forest terrain");
         }
-          if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Cave")
-          {
-              Console.WriteLine("You are in a Cave terrain");
-            }
-              if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Hills")
-              {
-                  Console.WriteLine("You are in a Hill terrain");
-                }
-                  if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Small lake/river")
-                  {
-                      Console.WriteLine("You are in a lake/river terrain");
-
-
-                  }
-      if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Rocky Beach")
-      {
-          Console.WriteLine("You are in a Rocky Beach terrain");
+        if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Mountain peak")
+        {
+            Console.WriteLine("You are in a Mountain Peak terrain");
         }
-          if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Desert")
-          {
-              Console.WriteLine("You are in a Desert terrain");
-            }
-              if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Island")
-              {
-                  Console.WriteLine("You are in a Island terrain");
-                }
-                  
+        if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Cliffside")
+        {
+            Console.WriteLine("You are in a Cliffside terrain");
+        }
+        if (Terrain[TerrainIndex] == "Mountain" && MountainTerrain[MountainTerrainIndex] == "Volcano")
+        {
+            Console.WriteLine("You are in a Volcano terrain");
+
+
+        }
+        if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Forest")
+        {
+            Console.WriteLine("You are in a Forest terrain");
+        }
+        if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Cave")
+        {
+            Console.WriteLine("You are in a Cave terrain");
+        }
+        if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Hills")
+        {
+            Console.WriteLine("You are in a Hill terrain");
+        }
+        if (Terrain[TerrainIndex] == "Plains" && PlainsTerrain[PlainsTerrainIndex] == "Small lake/river")
+        {
+            Console.WriteLine("You are in a lake/river terrain");
+
+
+        }
+        if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Rocky Beach")
+        {
+            Console.WriteLine("You are in a Rocky Beach terrain");
+        }
+        if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Desert")
+        {
+            Console.WriteLine("You are in a Desert terrain");
+        }
+        if (Terrain[TerrainIndex] == "Beach" && BeachTerrain[BeachTerrainIndex] == "Island")
+        {
+            Console.WriteLine("You are in a Island terrain");
+        }
 
 
 
-                }
 
-            }
+    }
+
+}
 
 
 
-            // Method that, depending on certain modifiers(body parts) would multiply attributes positively or negatively. Check if Modifiers are buffed/debuffed per Body Section(Head,Torso,etc) if the modifiers multiplications apply to terrain/weather
+// Method that, depending on certain modifiers(body parts) would multiply attributes positively or negatively. Check if Modifiers are buffed/debuffed per Body Section(Head,Torso,etc) if the modifiers multiplications apply to terrain/weather
 
-        
 
-    
+
+
 
