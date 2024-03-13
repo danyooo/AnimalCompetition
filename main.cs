@@ -16,6 +16,7 @@ class Program
         // While player name is not selected...
         while (Player1.name == "")
         {
+          Console.WriteLine(" I am selecting a name!");
             Player1.readInput();
             Player1.selectName(PlayerName);
             // once player name is selected, break the loop
@@ -29,7 +30,7 @@ class Program
         {
             while (Player1.name != "")
             {
-
+Console.WriteLine("I am finished selecting a name!");
                 // create an array to cycle through
                 string[] testArray = { "a", "b", "c", "d", "e" };
                 int arrayReader = testArray.Length - 3;
