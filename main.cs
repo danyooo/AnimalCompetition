@@ -8,69 +8,69 @@ class Program
     {
 
 
-        var Player1 = new Player();
-        // Create a list to store player inputs in while selecting a name
-        // Create a 'PlayerName' list to store each character a player inputs during         name selection
-        List<char> PlayerName = new List<char>();
-        // While player name is not selected...
-        Console.WriteLine("Please enter your name");
-        while (Player1.name == "")
-        {
-      
-            Player1.readInput();
-            Player1.selectName(PlayerName);
-            // once player name is selected, break the loop
-            if (Player1.name != "")
-            {
-                break;
-            }
-        }
-        // once player name is set, cycle array
-        if (Player1.name != "")
-        {
-                string[] testArray = { "a", "b", "c", "d", "e" };
-                int arrayReader = testArray.Length - 3;
-            while (Player1.name != "")
-            {
-                // create an array to cycle through
-                Player1.readInput();
-                // Add a linebreak 
-                Console.WriteLine("\n you pressed " + Player1.keyInput);
+        // var Player1 = new Player();
+        // // Create a list to store player inputs in while selecting a name
+        // // Create a 'PlayerName' list to store each character a player inputs during         name selection
+        // List<char> PlayerName = new List<char>();
+        // // While player name is not selected...
+        // Console.WriteLine("Please enter your name");
+        // while (Player1.name == "")
+        // {
 
-                Player1.cycleChoices(testArray, ref arrayReader);
+        //     Player1.readInput();
+        //     Player1.selectName(PlayerName);
+        //     // once player name is selected, break the loop
+        //     if (Player1.name != "")
+        //     {
+        //         break;
+        //     }
+        // }
+        // // once player name is set, cycle array
+        // if (Player1.name != "")
+        // {
+        //         string[] testArray = { "a", "b", "c", "d", "e" };
+        //         int arrayReader = testArray.Length - 3;
+        //     while (Player1.name != "")
+        //     {
+        //         // create an array to cycle through
+        //         Player1.readInput();
+        //         // Add a linebreak 
+        //         Console.WriteLine("\n you pressed " + Player1.keyInput);
 
-            }
-        }
-        // WEATHER TEST CODE
-        Console.WriteLine("Hello World");
-        var env = new Environment();
-        env.testing();
-        var attri = new Attributes();
+        //         Player1.cycleChoices(testArray, ref arrayReader);
 
-        if (env.rain)
-        {
-            attri.mobility -= 1;
-            Console.WriteLine("Mobility reduced to " + attri.mobility);
-        }
+        //     }
+        // }
+        // // WEATHER TEST CODE
+        // Console.WriteLine("Hello World");
+        // var env = new Environment();
+        // env.testing();
+        // var attri = new Attributes();
 
-        if (env.NightVision)
-        {
+        // if (env.rain)
+        // {
+        //     attri.mobility -= 1;
+        //     Console.WriteLine("Mobility reduced to " + attri.mobility);
+        // }
 
-            attri.sight += 1;
-            Console.WriteLine("Vision increased to " + attri.sight);
-        }
-        if (env.Snowing)
-        {
+        // if (env.NightVision)
+        // {
 
-            attri.attack += 1;
-            Console.WriteLine("Attack increased to " + attri.attack);
-        }
-        if (env.Hailing)
-        {
+        //     attri.sight += 1;
+        //     Console.WriteLine("Vision increased to " + attri.sight);
+        // }
+        // if (env.Snowing)
+        // {
 
-            attri.defense -= 1;
-            Console.WriteLine("Health decreased by 1 ");
-        }
+        //     attri.attack += 1;
+        //     Console.WriteLine("Attack increased to " + attri.attack);
+        // }
+        // if (env.Hailing)
+        // {
+
+        //     attri.defense -= 1;
+        //     Console.WriteLine("Health decreased by 1 ");
+        // }
     }
 }
 
@@ -90,8 +90,8 @@ class Player
     // has a pointpool variable
     protected int pointpool = 15;
     //has a name variable
-    public string name =""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
-                        // Create a keyInput variable to return the pressed key to
+    public string name = ""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
+                             // Create a keyInput variable to return the pressed key to
     public char keyInput;
     //has a method that reads inputs
     public void readInput()
@@ -154,9 +154,24 @@ class Modifiers : Attributes
 {
     //variable to store pointvalue (neg or pos) for each part
     int pointvalue;
+    bool choosable;
     // Method that would check if the player has enough points to choose a modifier
     // check every time a player confirms their modifier selection
-    public void checkPoints() { }
+    public void checkPoints(int playerpoints)
+    {
+        // If the playerpoints are greater than 0
+        // The modifier is choosable
+        // Otherwise, it isn't
+        if (playerpoints > 0)
+        {
+            this.choosable = true;
+        }
+        else
+        {
+            this.choosable = false;
+        }
+
+    }
 
     // Keep attributes blank, set them later in the construction of objects
     // Method that would take or add points from the players point pool
