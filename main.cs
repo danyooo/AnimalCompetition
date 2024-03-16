@@ -139,11 +139,12 @@ class Player
 class Attributes
 {
     // define general attributes (mobility,defense, etc)
-    public int defense = 5;
-    public int mobility = 5;
-    public int sight = 5;
-    public int attack = 5;
-    public void Attributetest()
+  // Set the attributes to a default value of 5
+    protected int defense = 5;
+    protected int mobility = 5;
+    protected int sight = 5;
+    protected int attack = 5;
+    protected void Attributetest()
     {
         Console.WriteLine("Defense is " + defense + ", mobility is " + mobility + ", sight is " + sight + ", attack is " + attack);
 
@@ -173,12 +174,22 @@ class Modifiers : Attributes
 
     }
 
-    // Keep attributes blank, set them later in the construction of objects
+    // Keep attributes blank, set them later in the construction of objects  (as  an additive bonus)
+  public new int defense = 0;
+  public new int attack = 0;
+  public new int mobility = 0;
+  public new int sight = 0;
+  
     // Method that would take or add points from the players point pool
+  public void pointPay(int playerpoints){
+    // Point value would be a negative if the cost would take player points, and positive if the player would gain points from choosing the object
+    playerpoints += this.pointvalue;
+  }
     // Attributes would add to the Chimera Object's attributes
 
     // If applicable, method that would do as above states
     // When creating an object, ensure it doesn't already exist in the body section somehow. Either make this a parent class and have its descendants have an array pool of the options or find an alternative
+  
 }
 // Have the Chimera Class inherit from the attributes class
 class Chimera : Attributes
