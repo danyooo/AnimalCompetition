@@ -16,7 +16,7 @@ class Program
         Console.WriteLine("Please enter your name");
         while (Player1.name == "")
         {
-      
+
             Player1.readInput();
             Player1.selectName(PlayerName);
             // once player name is selected, break the loop
@@ -90,8 +90,8 @@ class Player
     // has a pointpool variable
     protected int pointpool = 15;
     //has a name variable
-    public string name =""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
-                        // Create a keyInput variable to return the pressed key to
+    public string name = ""; // to be entered by the player. Set to "" so the While Loops can detect whether it is empty or not
+                             // Create a keyInput variable to return the pressed key to
     public char keyInput;
     //has a method that reads inputs
     public void readInput()
@@ -139,6 +139,7 @@ class Player
 class Attributes
 {
     // define general attributes (mobility,defense, etc)
+  // Set the attributes to a default value of 5
     public int defense = 5;
     public int mobility = 5;
     public int sight = 5;
@@ -154,16 +155,41 @@ class Modifiers : Attributes
 {
     //variable to store pointvalue (neg or pos) for each part
     int pointvalue;
+    bool choosable;
     // Method that would check if the player has enough points to choose a modifier
     // check every time a player confirms their modifier selection
-    public void checkPoints() { }
+    public void checkPoints(int playerpoints)
+    {
+        // If the playerpoints are greater than 0
+        // The modifier is choosable
+        // Otherwise, it isn't
+        if (playerpoints > 0)
+        {
+            this.choosable = true;
+        }
+        else
+        {
+            this.choosable = false;
+        }
 
-    // Keep attributes blank, set them later in the construction of objects
+    }
+
+    // Keep attributes blank, set them later in the construction of objects  (as  an additive bonus)
+  public new int defense = 0;
+  public new int attack = 0;
+  public new int mobility = 0;
+  public new int sight = 0;
+  
     // Method that would take or add points from the players point pool
+  public void pointPay(int playerpoints){
+    // Point value would be a negative if the cost would take player points, and positive if the player would gain points from choosing the object
+    playerpoints += this.pointvalue;
+  }
     // Attributes would add to the Chimera Object's attributes
 
     // If applicable, method that would do as above states
     // When creating an object, ensure it doesn't already exist in the body section somehow. Either make this a parent class and have its descendants have an array pool of the options or find an alternative
+  
 }
 // Have the Chimera Class inherit from the attributes class
 class Chimera : Attributes
