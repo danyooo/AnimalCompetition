@@ -8,69 +8,69 @@ class Program
     {
 
 
-        // var Player1 = new Player();
-        // // Create a list to store player inputs in while selecting a name
-        // // Create a 'PlayerName' list to store each character a player inputs during         name selection
-        // List<char> PlayerName = new List<char>();
-        // // While player name is not selected...
-        // Console.WriteLine("Please enter your name");
-        // while (Player1.name == "")
-        // {
+        var Player1 = new Player();
+        // Create a list to store player inputs in while selecting a name
+        // Create a 'PlayerName' list to store each character a player inputs during         name selection
+        List<char> PlayerName = new List<char>();
+        // While player name is not selected...
+        Console.WriteLine("Please enter your name");
+        while (Player1.name == "")
+        {
 
-        //     Player1.readInput();
-        //     Player1.selectName(PlayerName);
-        //     // once player name is selected, break the loop
-        //     if (Player1.name != "")
-        //     {
-        //         break;
-        //     }
-        // }
-        // // once player name is set, cycle array
-        // if (Player1.name != "")
-        // {
-        //         string[] testArray = { "a", "b", "c", "d", "e" };
-        //         int arrayReader = testArray.Length - 3;
-        //     while (Player1.name != "")
-        //     {
-        //         // create an array to cycle through
-        //         Player1.readInput();
-        //         // Add a linebreak 
-        //         Console.WriteLine("\n you pressed " + Player1.keyInput);
+            Player1.readInput();
+            Player1.selectName(PlayerName);
+            // once player name is selected, break the loop
+            if (Player1.name != "")
+            {
+                break;
+            }
+        }
+        // once player name is set, cycle array
+        if (Player1.name != "")
+        {
+                string[] testArray = { "a", "b", "c", "d", "e" };
+                int arrayReader = testArray.Length - 3;
+            while (Player1.name != "")
+            {
+                // create an array to cycle through
+                Player1.readInput();
+                // Add a linebreak 
+                Console.WriteLine("\n you pressed " + Player1.keyInput);
 
-        //         Player1.cycleChoices(testArray, ref arrayReader);
+                Player1.cycleChoices(testArray, ref arrayReader);
 
-        //     }
-        // }
-        // // WEATHER TEST CODE
-        // Console.WriteLine("Hello World");
-        // var env = new Environment();
-        // env.testing();
-        // var attri = new Attributes();
+            }
+        }
+        // WEATHER TEST CODE
+        Console.WriteLine("Hello World");
+        var env = new Environment();
+        env.testing();
+        var attri = new Attributes();
 
-        // if (env.rain)
-        // {
-        //     attri.mobility -= 1;
-        //     Console.WriteLine("Mobility reduced to " + attri.mobility);
-        // }
+        if (env.rain)
+        {
+            attri.mobility -= 1;
+            Console.WriteLine("Mobility reduced to " + attri.mobility);
+        }
 
-        // if (env.NightVision)
-        // {
+        if (env.NightVision)
+        {
 
-        //     attri.sight += 1;
-        //     Console.WriteLine("Vision increased to " + attri.sight);
-        // }
-        // if (env.Snowing)
-        // {
+            attri.sight += 1;
+            Console.WriteLine("Vision increased to " + attri.sight);
+        }
+        if (env.Snowing)
+        {
 
-        //     attri.attack += 1;
-        //     Console.WriteLine("Attack increased to " + attri.attack);
-        // }
-        // if (env.Hailing)
-        // {
+            attri.attack += 1;
+            Console.WriteLine("Attack increased to " + attri.attack);
+        }
+        if (env.Hailing)
+        {
 
-        //     attri.defense -= 1;
-        //     Console.WriteLine("Health decreased by 1 ");
-        // }
+            attri.defense -= 1;
+            Console.WriteLine("Health decreased by 1 ");
+        }
     }
 }
 
@@ -140,11 +140,11 @@ class Attributes
 {
     // define general attributes (mobility,defense, etc)
   // Set the attributes to a default value of 5
-    protected int defense = 5;
-    protected int mobility = 5;
-    protected int sight = 5;
-    protected int attack = 5;
-    protected void Attributetest()
+    public int defense = 5;
+    public int mobility = 5;
+    public int sight = 5;
+    public int attack = 5;
+    public void Attributetest()
     {
         Console.WriteLine("Defense is " + defense + ", mobility is " + mobility + ", sight is " + sight + ", attack is " + attack);
 
